@@ -1,11 +1,16 @@
+
+import Routes from "./routes/Routes"
 import './App.css';
-import Login from "./pages/login/Login";
+// import Login from "./pages/login/Login";
+
 
 function App() {
   return (
-    <>
-      <Login/>
-    </>
+ <>
+ 
+ <Routes/>
+ </>
+    
   )
 }
 

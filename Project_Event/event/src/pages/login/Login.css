@@ -63,12 +63,10 @@
     
     /* RESPONSIVIDADE */
      
-    /* me de algumas caracteristicas a partir de um tamanho de tela */
-    @media screen and (max-width: 768px ){
-        /* 0px -> 768px */
-    
-        .banner{
-            display: none;
-        }
-        
-    }
+ 
+    @media screen and (max-width: 768px){
+      .banner{
+          /* Para a imagem desaparecer */
+          display: none;
+      }
+  }
