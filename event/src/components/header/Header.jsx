@@ -1,8 +1,9 @@
 import "./Header.css";
 import Logo1 from "../../assets/img/logo1.svg"
+import portinha from "../../assets/img/portinha.png"
 
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
             <div className="layout_grid cabecalho">
@@ -18,7 +19,7 @@ const Header = () => {
             </nav>
             
             <nav className="nav_header admin">
-              <Link to="/Administrador" className="link_header" href="">Administrador</Link>
+              <Link to="/Administrador" className="link_header" href="">{props.headerzinho}<img src={portinha} alt="" /></Link>
                 
             </nav>
 

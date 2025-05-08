@@ -1,29 +1,27 @@
 import Cadastro from "../../components/cadastro/Cadastro";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header"
-import CadastroEvento from "../../assets/img/CadastroEvento.svg"
+import TiposUsuarios from "../../assets/img/TipoUsuario.svg"
 import Lista from "../../components/lista/Lista"
 
 
-const Evento = () => {
+const TipoUsuario = () => {
     return (
      <>
      <Header/>
      <main>
  
-     <Cadastro tituloCadastro="Cadastro de evento"
-                    campoPlaceholder="evento"
+     <Cadastro tituloCadastro="Cadastro tipo de Usuário"
+                    campoPlaceholder="tipo de usuário"
                     visibilidade="none"
-                    nomeplacehoderr="nome"
-                    nomeplacehoder="tipo de evento"
                     nomeDoBotao="Cadastrar"
-                    img_banner={CadastroEvento}
-                    
-
+                    nomeplacehoderr=" Digite o evento"
+                    img_banner={TiposUsuarios}
                 />
 
 <Lista 
- tituloLista="Lista de Eventos"
+ tituloLista="Lista de Usuários"
+ tipos="Tipo Usuário"
 />
 
      </main>
@@ -32,4 +30,4 @@ const Evento = () => {
 
     )
 }
-export default Evento;
+export default TipoUsuario;
