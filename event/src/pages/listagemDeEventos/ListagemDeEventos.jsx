@@ -2,29 +2,32 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import "./ListagemDeEventos.css"
 import Mensagem from "../../assets/img/mensagem.png"
+import Lapis from "../../assets/img/Lapis.png"
+import Excluir from "../../assets/img/Lixeira.png"
 
 
 
 
 const ListagemEventos = () => {
     return (
-        <>
-            <Header headerzinho="Aluno" />
-            <section className="listagem_evento">
+          <>
+        
+        <Header/>
+        <section className="layout_grid listagem_evento">
                 <h1>Eventos</h1>
                 <hr />
                 <div className="tabela_evento">
                     <select name="Todos os Eventos" id="" className="select_evento">
                         <option value="" disabled selected>Todos os Eventos</option>
-                        <option value="">opção 1</option>
-                        <option value="">opção 2</option>
-                        <option value=""> opção 3</option>
+                        <option value="">op 1</option>
+                        <option value="">op 2</option>
+                        <option value=""> op 3</option>
                     </select>
                     <thead>
                         <tr className="table_evento">
                             <th>Titulo</th>
-                            <th>Tipo de Evento</th>
-                            <th>mensagens</th>
+                            <th>Tipo Evento</th>
+                            <th>Comentários</th>
                             <th>Participar</th>
                         </tr>
                     </thead>
@@ -32,21 +35,22 @@ const ListagemEventos = () => {
                         <tr className="item_evento">
                             <td data-cell="Nome" >Nome Evento</td>
                             <td data-cell="Evento">Tipo Evento</td>
-                            <td data-cell="Comentar"><img src={Mensagem} alt="Imagem do comentario" /></td>
-                            <td data-cell="Botao"><Toggle /></td>
+                            <td data-cell="Editar"><img src={Lapis} alt="Imagem de uma caneta" /></td>
+                            <td data-cell="Excluir"><Excluir/></td>
                         </tr>
                     </tbody>
                     <tbody>
                         <tr className="item_evento">
-                            <td data-cell="Nome" >nome do evento</td>
-                            <td data-cell="Evento">Tipo do Evento</td>
-                            <td data-cell="mensagem"><img src={Mensagem} alt="Imagem de um comentario" /></td>
-                            <td data-cell="Botao"><Toggle /></td>
+                            <td data-cell="Nome" >Nome Evento</td>
+                            <td data-cell="Evento">Tipo Evento</td>
+                            <td data-cell="Editar"><img src={Lapis} alt="Imagem de uma caneta" /></td>
+                            <td data-cell="Excluir"><Excluir/></td>
                         </tr>
                     </tbody>
                 </div>
             </section>
-            <Footer />
+        <Footer/>
+
         </>
     )
 }

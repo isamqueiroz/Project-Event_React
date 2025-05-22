@@ -1,32 +1,61 @@
-import "./Lista.css"
-import Editar from "../../assets/img/Lapis.png"
-import Excluir from "../../assets/img/Lixeira.png"
-
+import "./Lista.css";
+import Editar from "../../assets/img/Lapis.png";
+import Excluir from "../../assets/img/Lixeira.png";
 
 const Lista = (props) => {
-    return(
-        <section className="listagem">
-            <h1>{props.tituloLista}</h1>
-            <hr />
+  return (
+    <section className="listagem">
+      <h1>{props.tituloLista}</h1>
+      <hr />
 
-            <div className="tabela">
-                <thead>
-                    <tr className="table_cabecalho">
-                        <th>Titulo</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className="item_lista">
-                        <td data-cell="Nome" >{props.tipos}</td>
-                        <td data-cell="Editar"><img src={Excluir} alt="Imagem de uma caneta" /></td>
-                        <td data-cell="Excluir"><img src={Editar} alt="Lixeira" /></td> 
-                    </tr>
-                </tbody>
-            </div>
-        </section>
-    )
-}
+      <div className="tabela">
+        <thead>
+          <tr className="table_cabecalho">
+            <th>Titulo</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.lista && props.lista.length > 0 ? (
+            props.lista.map((item) => (
+              <tr
+                className="item_lista"
+                key={
+                  props.tipoLista == "tipoEvento"
+                    ? item.idTipoEvento
+                    : item.idTipoUsuario
+                }>
+                <td data-cell="Nome">
+                  {props.tipoLista == "tipoEvento"
+                    ? item.tituloTipoEvento
+                    : item.tituloTipoUsuario}
+                </td>
+                <td data-cell="Editar">
+                  <button
+                    className="icon"
+                    onClick={() => props.funcEditar(item)}
+                  >
+                    <img src={Editar} alt="Caneta" />
+                  </button>
+                </td>
+                <td data-cell="Excluir">
+                  <button
+                    className="icone"
+                    onClick={() => props.funcExcluir(item)}
+                  >
+                    <img src={Excluir} alt="Lixeira" />
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <p>nenhum tipo de evento encontrado</p>
+          )}
+        </tbody>
+      </div>
+    </section>
+  );
+};
 
 export default Lista;

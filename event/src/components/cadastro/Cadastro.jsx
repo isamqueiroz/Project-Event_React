@@ -8,18 +8,26 @@ const Cadastro = (props) => {
         <hr />
       </div>
 
-      <form action="" className="layout_grid form_cadastro">
+      <form onSubmit={props.funcCadastro} className="layout_grid form_cadastro" >
         <img className="img_Cadastro" src={props.img_banner} alt="" />
         <div className="campos_cadastro">
           <div className="campo_cad_nome">
-            <input type="text" placeholder={props.campoPlaceholder} />
+            <input 
+            type="text" placeholder={props.campoPlaceholder}   
+                            name="nome"
+                            value={props.valorInput}
+                            // ao mudar o input algo acontece:
+                            // Atualizar o estado do pai ao digitar
+                            //target está indo buscar o valor do "e"
+                            onChange={(e) => props.setValorInput(e.target.value)}
+             />
           </div>
 
           <div
             className="campo_cad_genero"
             style={{ display: props.visibilidade }}
           >
-            <select name="" id="">
+            <select name="" id=""> 
               <option value="" disabled selected>
                 Tipo Evento
               </option>

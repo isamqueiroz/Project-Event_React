@@ -8,7 +8,7 @@ import Lista from "../../components/lista/Lista"
 const Evento = () => {
     return (
      <>
-     <Header/>
+     <Header headerzinho="Administrador" />
      <main>
  
      <Cadastro tituloCadastro="Cadastro de evento"
