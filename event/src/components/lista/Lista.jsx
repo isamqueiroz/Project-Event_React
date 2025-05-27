@@ -33,10 +33,10 @@ const Lista = (props) => {
                 </td>
                 <td data-cell="Editar">
                   <button
-                    className="icon"
+                    className="botao"
                     onClick={() => props.funcEditar(item)}
                   >
-                    <img src={Editar} alt="Caneta" />
+                    <img src={Excluir} alt="Caneta" />
                   </button>
                 </td>
                 <td data-cell="Excluir">
@@ -44,7 +44,7 @@ const Lista = (props) => {
                     className="icone"
                     onClick={() => props.funcExcluir(item)}
                   >
-                    <img src={Excluir} alt="Lixeira" />
+                    <img src={Editar} alt="Lixeira" />
                   </button>
                 </td>
               </tr>

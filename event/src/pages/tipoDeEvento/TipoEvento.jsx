@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const TipoEvento = () => {
 
       const [tipoEvento, setTipoEvento] = useState("");
-      const [listaTipoEvento, setListaEvento] = useState([]);
+      const [listaTipoEvento, setListaTipoEvento] = useState([]);
     
 
  function alertar(icone, mensagem) {
@@ -46,19 +46,78 @@ const TipoEvento = () => {
     }
   }
 
-async function listarTipoEvento() {
-    try {
-      const resposta = await api.get("TiposEventos");
-      setListaEvento(resposta.data);
-    } catch (error) {
-      console.log(error);
+// async function listarTipoEvento() {
+//     try {
+//       const resposta = await api.get("TiposEventos");
+//       setListaEvento(resposta.data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+
+
+ async function listarTipoEvento() {
+        try {
+
+            const resposta = await api.get("tiposEventos");
+            //console.log(resposta.data);
+            setListaTipoEvento(resposta.data);
+            //console.log(resposta.data);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
-  }
 
 
-useEffect(() => {
-    cadastrarTipoEvento();
-},[])
+ async function editarTipoEvento(tipoEvento) {
+        const { value: novoTipoEvento } = await Swal.fire({
+            title: "Modifique seu Tipo Evento",
+            input: "text",
+            confirmButtonColor: '#B51D44',
+            cancelButtonColor: '#000000',
+            inputLabel: "Novo Tipo Evento",
+            inputValue: TipoEvento.tituloTipoEvento,
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return "O campo não pode estar vazio!";
+                }
+            }
+        });
+        if (novoTipoEvento) {
+            try {
+                await api.put(`tiposEventos/${tipoEvento.idTipoEvento}`,
+                    { tituloTipoEvento: novoTipoEvento });
+                alertar("success", "Tipo Evento Modificado!")
+            } catch (error) {
+
+            }
+            Swal.fire(`Seu novo Tipo Evento: ${novoTipoEvento}`);
+        }
+    }
+
+    async function excluirTipoEvento(id) {
+        Swal.fire({
+            title: 'Tem Certeza?',
+            text: "Essa ação não poderá ser desfeita!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#B51D44',
+            cancelButtonColor: '#000000',
+            confirmButtonText: 'Sim, apagar!',
+            cancelButtonText: 'Cancelar',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await api.delete(`tiposEventos/${id.idTipoEvento}`);
+                alertar("success", "Tipo Evento Excluido!");
+            }
+        }).catch(error => {
+            console.log(error);
+            alertar("error", "Erro ao Excluir!");
+        })
+    }
+
 
 useEffect(() => {
     listarTipoEvento();
@@ -85,8 +144,10 @@ useEffect(() => {
 <Lista 
  tituloLista="Lista Tipo de Evento"
  tipos="Tipo Evento"
- tipoLista = "TiposEventos"
+ tipoLista = "tipoEvento"
  lista={listaTipoEvento}
+ funcExcluir={excluirTipoEvento}
+ funcEditar={editarTipoEvento}
 />
      </main>
      <Footer/>

@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 const TipoUsuario = () => {
      const [tipoUsuario, setTipoUsuario] = useState("")
       const [listaTipoUsuario, setListaTipoUsuario] = useState([])
+      
 
      function alertar(icone, mensagem) {
     const Toast = Swal.mixin({
@@ -30,8 +31,8 @@ const TipoUsuario = () => {
     });
   }
 
-  async function cadastrarTipoUsuario(e){
-    // e.preventDefault();
+   async function cadastrarTipoUsuario(e){
+  e.preventDefault();
     if (tipoUsuario.trim() !== "") {
       try {
         await api.post("TiposUsuarios", { tituloTipoUsuario : tipoUsuario  });
@@ -46,20 +47,76 @@ const TipoUsuario = () => {
   }
 
 
-
 async function listarTipoUsuario() {
-    try {
-      const resposta = await api.get("usuario");
-      setListaTipoUsuario(resposta.data);
-    } catch (error) {
-      console.log(error);
+        try {
+
+            const resposta = await api.get("tiposUsuarios");
+            //console.log(resposta.data);
+            setListaTipoUsuario(resposta.data);
+            //console.log(resposta.data);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
-  }
 
 
-useEffect(() => {
-    cadastrarTipoUsuario();
-},[])
+ async function excluirTipoUsuario(id) {
+        Swal.fire({
+            title: 'Tem Certeza?',
+            text: "Essa ação não poderá ser desfeita!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#640016',
+            cancelButtonColor: '#000000',
+            confirmButtonText: 'Sim, apagar!',
+            cancelButtonText: 'Cancelar',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await api.delete(`tiposUsuarios/${id.idTipoUsuario}`);
+                alertar("success", "TipoUsuario Excluido!");
+            }
+        }).catch(error => {
+            console.log(error);
+            alertar("error", "Erro ao Excluir!");
+        })
+    }
+
+    async function editarTipoUsuario(tipoUsuario) {
+        const { value: novoTipoUsuario } = await Swal.fire({
+            title: "Modifique seu Tipo Usuario",
+            input: "text",
+            confirmButtonColor: '#640016',
+            cancelButtonColor: '#000000',
+            inputLabel: "Novo Tipo Usuario",
+            inputValue: tipoUsuario.tituloTipoUsuario,
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return "O campo não pode estar vazio!";
+                }
+            }
+        });
+        if (novoTipoUsuario) {
+            try {
+                await api.put(`tiposUsuarios/${tipoUsuario.idTipoUsuario}`,
+                    { tituloTipoUsuario: novoTipoUsuario });
+                alertar("success", "Tipo Usuario Modificado!")
+            } catch (error) {
+
+            }
+            Swal.fire(`Seu novo Tipo de Usuario: ${novoTipoUsuario}`);
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 useEffect(() => {
     listarTipoUsuario();
@@ -75,6 +132,11 @@ useEffect(() => {
                     nomeDoBotao="Cadastrar"
                     nomeplacehoderr=" Digite o evento"
                     img_banner={TiposUsuarios}
+                     funcCadastro={cadastrarTipoUsuario}
+                     valorInput={tipoUsuario}
+                     setValorInput={setTipoUsuario}
+                     onSubmit= {cadastrarTipoUsuario}
+
                 />
 
 <Lista 
@@ -82,6 +144,8 @@ useEffect(() => {
  tipos="Tipo Usuário"
  tipoLista = "tipoUsuario"
  lista={listaTipoUsuario}
+ funcExcluir={excluirTipoUsuario}
+ funcEditar={editarTipoUsuario}
 />
 
      </main>
