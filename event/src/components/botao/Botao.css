@@ -3,7 +3,7 @@
 .botao {
     width: 30%;
     padding: 12px;
-    background-color: #640016;
+    background-color: #821126;
     color: white;
     border: none;
     border-radius: 8px;
@@ -11,4 +11,18 @@
     box-shadow: 1px 4px 4px 0px #00000045;
   }
 
-  
+  .botao_editar{
+    width: 30%;
+    padding: 12px;
+    background-color: #821126;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 38px;
+  }
+
+  .icone{
+    background-color: #821126;
+    width: 30%;
+  }

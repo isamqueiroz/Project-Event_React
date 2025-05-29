@@ -12,8 +12,10 @@ const Lista = (props) => {
         <thead>
           <tr className="table_cabecalho">
             <th>Titulo</th>
+            <th>Data</th> {/* NOVO */}
+            <th>Tipo de Evento</th> {/* NOVO */}
             <th>Editar</th>
-            <th>Excluir</th>
+            <th>Descrição</th>
           </tr>
         </thead>
         <tbody>
@@ -22,18 +24,21 @@ const Lista = (props) => {
               <tr
                 className="item_lista"
                 key={
-                  props.tipoLista == "tipoEvento"
+                  props.tipoLista === "tipoEvento"
                     ? item.idTipoEvento
                     : item.idTipoUsuario
-                }>
-                <td data-cell="Nome">
-                  {props.tipoLista == "tipoEvento"
+                }
+              >
+                <td data-cell="Titulo">
+                  {props.tipoLista === "tipoEvento"
                     ? item.tituloTipoEvento
                     : item.tituloTipoUsuario}
                 </td>
+                <td data-cell="Descrição">{item.descricao}</td> {/* NOVO */}
+                <td data-cell="Data">{item.data}</td> {/* NOVO */}
                 <td data-cell="Editar">
                   <button
-                    className="botao"
+                    className="botao_editar"
                     onClick={() => props.funcEditar(item)}
                   >
                     <img src={Excluir} alt="Caneta" />
@@ -50,7 +55,11 @@ const Lista = (props) => {
               </tr>
             ))
           ) : (
-            <p>nenhum tipo de evento encontrado</p>
+            <tr>
+              <td colSpan="5" style={{ textAlign: "center", color: "white" }}>
+                nenhum tipo de evento encontrado
+              </td>
+            </tr>
           )}
         </tbody>
       </div>

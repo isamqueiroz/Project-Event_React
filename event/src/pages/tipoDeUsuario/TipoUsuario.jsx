@@ -136,6 +136,10 @@ useEffect(() => {
                      valorInput={tipoUsuario}
                      setValorInput={setTipoUsuario}
                      onSubmit= {cadastrarTipoUsuario}
+                     visibilidadeData="none"
+                     visibilidadeTipoEvento="none"
+                     visibilidadeInst="none"
+                     visibilidadeDesc="none"
 
                 />
 
@@ -146,6 +150,7 @@ useEffect(() => {
  lista={listaTipoUsuario}
  funcExcluir={excluirTipoUsuario}
  funcEditar={editarTipoUsuario}
+ 
 />
 
      </main>
