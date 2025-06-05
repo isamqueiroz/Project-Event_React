@@ -4,6 +4,7 @@ import TipoEvento from "../pages/tipoDeEvento/TipoEvento";
 import TipoUsuario from "../pages/tipoDeUsuario/TipoUsuario";
 import Evento from "../pages/cadastroEventos/CadastroEventos";
 import ListagemDeEventos from "../pages/listagemDeEventos/ListagemDeEventos";
+import TelaHome from "../pages/telaHome/telaHome"
 
 const Rotas = () => {
   return (
@@ -19,6 +20,8 @@ const Rotas = () => {
         <Route path="/Eventos" element={<Evento />} exact />
 
         <Route path="/ListagemEvento" element={<ListagemDeEventos />} exact />
+
+        <Route path="/Home" element={<TelaHome />} exact />
       </Routes>
     </BrowserRouter>
   );
