@@ -5,108 +5,85 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import api from "../../Services/services";
 import "./Login.css";
-import { Await } from "react-router-dom";
 import { userDecodeToken } from "../../auth/Auth";
 import secureLocalStorage from "react-secure-storage";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
-const Login = () => {
-      const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
-    
+
+  const Login = () => {
     const navigate = useNavigate();
-
-     function alertar(icone, mensagem) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: icone,
-                title: mensagem
-            });
-        }
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+    const {setUsuario} = useAuth();
 
     async function realizarAutenticacao(e) {
         e.preventDefault();
-
         const usuario = {
             email: email,
             senha: senha
         }
-        if(senha.trim() != "" || email.trim() != ""){
-
+        if (senha.trim() != "" || email.trim() != "") {
             try {
                 const resposta = await api.post("Login", usuario);
+                const token = resposta.data.token
 
-                const token = resposta.data.token;
-                
-                if(token){
-                    //token sera decodificado:
+                if (token) {
                     const tokenDecodificado = userDecodeToken(token);
-                    
-                    // Armazenando:
-                    secureLocalStorage.setItem("nome", JSON.stringify(tokenDecodificado));
+                    //console.log("Token decodificado");
+                    //console.log(tokenDecodificado);
+                    secureLocalStorage.setItem("tokenLogin", JSON.stringify(tokenDecodificado));
 
-                    if(tokenDecodificado.tipoUsuario === "aluno"){
-                        //redirecionar a tela de aluno (branca)
-                        navigate("/ListagemEvento")
-                    }else{
-                        //ele vai me encaminhar pra tela cadastro (vermelha)
-                        navigate("/Eventos")
+                    setUsuario(tokenDecodificado);
+
+                    if (tokenDecodificado.tipoUsuario === "aluno") {
+                        //redirecionar a tela de aluno
+                        navigate("/listagemEventos");
+                    } else {
+                        //ele vai me encaminhar para a tela cadastro
+                        navigate("/eventos")
                     }
                 }
             } catch (error) {
                 console.log(error);
-                alertar("error", "Email ou Senha invalidos. !!")
+                alert("Email ou senha invalidos! para duvidas, entre em contato com o suporte")
             }
-        }else{
-            alertar("error", "preencha os campos vazios!")
+        } else {
+            alert("preencha os campos vazios para realizar o login");
         }
-    }
-  return (
-    <main className="main-login">
-      <div className="login-direito">
-        <div className="login-esquerdo">
-          <div className="foto">
-            <img src={Primeira} alt="Event+" />
-          </div>
-        </div>
-      </div>
-      <div className="login-right">
-        <img src={Logo} alt="Logo do Event" className="logo-event" />
-        <form className="form_login" onSubmit={realizarAutenticacao}>
-          <div className="campos_login">
-            <input
-              type="email"
-              placeholder="Username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              name="username"
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              name="Senha"
-            />
-          </div>
-          <a href="/" className="Senha-esquecida">
-            Esqueceu a senha?
-          </a>
-          <Botao nomeDoBotao="Login" />
-        </form>
-      </div>
-    </main>
-  );
-};
 
+    }
+
+
+    return (
+        <main className="login-container">
+            <link rel="stylesheet" href="https://use.typekit.net/pam4ubo.css"></link>
+            <div className="login-banner"></div>
+            <section className="login-content">
+                <img className="login-logo" src={Logo} alt="Event+" />
+
+                <form action="" className="login-form" onSubmit={realizarAutenticacao}>
+                    <div className="login-fields">
+
+                        <div className="login-input">
+                            <input type="email" name="nome" placeholder="Username"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+
+                        <div className="login-input">
+                            <input type="password" placeholder="Password"
+                                value={senha}
+                                onChange={(e) => setSenha(e.target.value)} />
+                        </div>
+
+                        <p className="login-forgot-password">Esqueceu a senha?</p>
+                    </div>
+
+                    <Botao nomeDoBotao="Login" />
+                </form>
+            </section>
+        </main>
+    );
+};
 export default Login;

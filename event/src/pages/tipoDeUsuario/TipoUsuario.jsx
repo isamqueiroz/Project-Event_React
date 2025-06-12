@@ -144,12 +144,14 @@ useEffect(() => {
                 />
 
 <Lista 
- tituloLista="Lista de Usuários"
- tipos="Tipo Usuário"
- tipoLista = "tipoUsuario"
- lista={listaTipoUsuario}
- funcExcluir={excluirTipoUsuario}
- funcEditar={editarTipoUsuario}
+  titulo_lista="Tipo Usuario"
+                titulo="Titulo"
+                visibilidade="none"
+
+                tipoLista="TiposUsuarios"
+                lista={listaTipoUsuario}
+                funcExcluir={excluirTipoUsuario}
+                funcEditar={editarTipoUsuario}
  
 />
 

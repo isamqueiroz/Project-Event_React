@@ -11,6 +11,8 @@ import { format } from "date-fns";
 import Modal from "../../components/modal/Modal";
 import descricao from "../../assets/img/descricao.png";
 import Swal from "sweetalert2";
+import { useFormAction } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const ListagemDeEventos = (props) => {
   const [tipoModal, setTipoModal] = useState("");
@@ -19,9 +21,11 @@ const ListagemDeEventos = (props) => {
 
   const[filtrodata,setFiltroData] = useState(["todos"])
 
-  const [usuarioId, setUsuarioId] = useState(
-    "438E489B-478F-4A11-9B5B-CCBF1C68BE30"
-  );
+
+const { usuario } = useAuth();
+  // const [usuarioId, setUsuarioId] = useState(
+  //   "438E489B-478F-4A11-9B5B-CCBF1C68BE30"
+  // ); //comente depois isa linda
 
   const [listaEvento, setListaEvento] = useState([]);
   async function listarEventos() {
@@ -30,7 +34,7 @@ const ListagemDeEventos = (props) => {
       const todosOsEventos = eventoListado.data;
 
       const respostaPresenca = await api.get(
-        "PresencasEventos/ListarMinhas/" + usuarioId
+        "PresencasEventos/ListarMinhas/" + usuario.idUsuario
       );
       const minhasPresencas = respostaPresenca.data;
 
@@ -84,7 +88,7 @@ const ListagemDeEventos = (props) => {
         //cadastrar uma nova presenca
         await api.post(`PresencasEventos/${idPresenca}`, {
           situacao: true,
-          idUsuario: usuarioId,
+          idUsuario: usuario.idUsuario,
           idEvento: idEvento,
         });
         Swal.fire("Confimada!", "Sua presenca foi confirmada", "success");

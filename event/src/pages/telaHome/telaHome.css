@@ -1,4 +1,4 @@
-/* 
+
 
 .div-banner-principal img {
     width: 100%;
@@ -46,7 +46,7 @@
 }
 
 .banner-secundario {
-    background-image: url("../../assets/img/banner2.png");
+    background-image: url("../../assets/img/Img2Home.png");
     width: 100%;
     height: 300px;
     color: white;
@@ -97,8 +97,10 @@ secao-contato {
 }
 
 .area-contato {
+    
     display: flex;
-    max-width: 100%;
+    
+    
 }
 
 .mapa-local {
@@ -115,4 +117,28 @@ secao-contato {
 .linha-final {
     width: 100%;
     border-bottom: solid 2px #00000055;
-} */
+}
+
+.visao{
+    font-size: 16px;
+    text-align: center;
+}
+
+.secao-contato{
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secao-contato{
+    height: 410px;
+    margin-bottom: 40px;
+}
+
+.mapa-local{
+    margin-top: 30px;
+    display: flex;
+    justify-content: left;
+}

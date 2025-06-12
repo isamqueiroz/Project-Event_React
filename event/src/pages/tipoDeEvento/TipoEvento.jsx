@@ -139,12 +139,16 @@ const TipoEvento = () => {
         />
 
         <Lista
-          tituloLista="Lista Tipo de Evento"
-          tipos="Tipo Evento"
-          tipoLista="tipoEvento"
-          lista={listaTipoEvento}
-          funcExcluir={excluirTipoEvento}
-          funcEditar={editarTipoEvento}
+          t titulo_lista="Tipo Evento"
+                titulo="Titulo"
+                visibilidade="none"
+                
+                lista={listaTipoEvento}
+
+                tipoLista="TiposEventos"
+
+                funcEditar={editarTipoEvento}
+                funcExcluir={excluirTipoEvento}
         />
       </main>
       <Footer />
