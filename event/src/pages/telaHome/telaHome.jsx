@@ -33,7 +33,13 @@ const Home = () => {
 
   return (
     <>
-      <Header Usuario="none" naver="none" />
+      <Header
+      headerzinho = 'none'
+      nav_header = "none"
+      Usuario="none" naver="none" 
+       nomeDoBotao = "Logar"
+
+      />
 
       <main>
         {/* Banner principal */}

@@ -219,7 +219,9 @@ const Evento = () => {
 
   return (
     <>
-      <Header headerzinho="Administrador" />
+      <Header headerzinho="Administrador"
+      nomeDoBotao = 'none'
+      />
       <main>
         <Cadastro
           tituloCadastro="Cadastro de evento"

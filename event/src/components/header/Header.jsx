@@ -15,7 +15,8 @@ const Header = (props) => {
               <Link to="/Home" className="link_header" href="">Home</Link>
               <Link to="/Eventos" className="link_header" href="">Eventos</Link>
               <Link to="/Usuarios" className="link_header" href="">Usuários</Link>
-              <Link to="/Contatos" className="link_header" href="">Contatos</Link>
+             <button className="botao" type="submit">{props.nomeDoBotao}</button>
+
             </nav>
             
             <nav className="nav_header admin">

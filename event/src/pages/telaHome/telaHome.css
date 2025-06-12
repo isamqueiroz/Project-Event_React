@@ -142,3 +142,9 @@ secao-contato {
     display: flex;
     justify-content: left;
 }
+
+.botao{
+    margin-right: -121px;
+    margin-top: -24px;
+ 
+}
