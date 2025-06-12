@@ -1,9 +1,9 @@
 // import Footer from "../../components/footer/Footer";
 // import Header from "../../components/header/Header";
-// import BannerPrincipal from "../../assets/img/bannerhome.png";
+// import BannerPrincipal from "../../assets/img/BannerPrincipal.png";
 // import { Link } from "react-router-dom";
 // import ImagemMapa from "../../assets/img/mapinha.png";
-// import BannerSecundario from "../../assets/img/Img2Home.png"
+
 // import "./telaHome.css";
 
 // const Home = () => {

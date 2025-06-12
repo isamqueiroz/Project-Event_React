@@ -16,6 +16,7 @@ const Evento = () => {
   const [instituicao, setInstituicao] = useState( "F058AC3A-CE9C-4C7B-ADA9-2EC4291F91BC");
   const [listaTipoEvento, setListaTipoEvento] = useState([]);
   const [listaEvento, setListaEvento] = useState([]);
+    const[filtrodata,setFiltroData] = useState(["todos"])
 
   function alertar(icone, mensagem) {
     const Toast = Swal.mixin({
@@ -102,6 +103,47 @@ const Evento = () => {
     }
   }
 
+   async function excluirEvento(id) {
+    Swal.fire({
+      title: "Tem Certeza?",
+      text: "Essa ação não poderá ser desfeita!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#B51D44",
+      cancelButtonColor: "#000000",
+      confirmButtonText: "Sim, apagar!",
+      cancelButtonText: "Cancelar",
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          await api.delete(`tiposEventos/${id.idTipoEvento}`);
+          alertar("success", "Tipo Evento Excluido!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alertar("error", "Erro ao Excluir!");
+      });
+  }
+
+   function filtrarEventos() {
+    
+    const hoje = new Date();
+    
+    return listaEvento.filter(evento => {  
+      const dataEvento = new Date (evento.dataEvento);
+      
+      
+      if(filtrodata.includes("todos")) return true;
+      if(filtrodata.includes("futuros") && dataEvento > hoje) return true;
+      if(filtrodata.includes("passados") && dataEvento < hoje) return true;
+      
+      return false;
+      
+    });
+    
+  }
+
   useEffect(() => {
     listarTipoEvento();
     listarEvento();
@@ -144,6 +186,7 @@ const Evento = () => {
           tipoLista="Evento"
           lista={listaEvento}
           mostrarDescricao={mostrarDescricao}
+           funcExcluir={excluirEvento}
         />
       </main>
       <Footer />

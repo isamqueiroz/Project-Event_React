@@ -7,6 +7,7 @@ import "./Modal.css";
 const Modal = (props) => {
   const [comentarios, setComentarios] = useState([]);
   const [novoComentario, setNovoComentario] = useState("")
+  const [usuarioId, setUsuarioId] = useState ("")
 
   async function listarComentario() {
     try {
@@ -33,7 +34,7 @@ const Modal = (props) => {
       }
     }
 
-    async function deletarComentario() {
+    async function deletarComentario(idComentario) {
       try {
         await api.delete(`ComentariosEventos/${idComentario}`);
       } catch (error) {
