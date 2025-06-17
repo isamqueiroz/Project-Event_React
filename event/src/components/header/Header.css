@@ -52,8 +52,17 @@ margin-bottom: 24px;
     color: #000000;
     text-decoration: none;
 }
-
-
+.botao{
+    margin-left: 250px;
+    width: 100px;
+    height: 35px;
+    border: none;
+    background-color: #B51D44;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    font-size: small;
+}
 .a{
     color: black;
 }

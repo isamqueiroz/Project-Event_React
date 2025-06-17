@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import BannerPrincipal from "../../assets/img/BannerPrincipal.png";
 import { Link } from "react-router-dom";
 import ImagemMapa from "../../assets/img/mapinha.png";
+import Logo1 from "../../assets/img/logo1.svg"
 
 import "./telaHome.css";
 
@@ -33,13 +34,24 @@ const Home = () => {
 
   return (
     <>
-      <Header
-      headerzinho = 'none'
-      nav_header = "none"
-      Usuario="none" naver="none" 
-       nomeDoBotao = "Logar"
+      <header
+        >
+            <div className="layout_grid cabecalho">
+                <img src={Logo1} alt="Logo Evento" />
+                <nav>
+                     <Link className="link_header" to="/" href="">Home</Link>
+                     <Link className="link_header" to="/ListaEventos" href="">Eventos</Link>
+                     <Link className="link_header" to="/TipoEvento" href="">Usuários</Link>
+                     <Link className="link_header" href="">Contatos</Link>
+                </nav>
+                <div className="Adm">
+                    <Link to="/">
+                    <button className="link_header" to="/">Logar</button>
+                    </Link>
+                </div>
 
-      />
+            </div>
+        </header>
 
       <main>
         {/* Banner principal */}

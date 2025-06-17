@@ -36,7 +36,7 @@
     width: 100%;
     border-style: solid;
     border-top-width: 1px;
-    border-color: #B51D44;
+    border-color:#821126;
     margin-top: 5px;
     color: white;
     
@@ -57,7 +57,7 @@
 
 
 .tabela_evento .table_evento th {
-    border-bottom: 2px solid #B51D44;
+    border-bottom: 2px solid #821126;
     width: 100px;
     margin-top: 40px;
     

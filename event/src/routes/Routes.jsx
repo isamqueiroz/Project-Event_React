@@ -38,7 +38,7 @@ const Rotas = () => {
         />
           <Route element = {<Privado tipoPermitido = "Administrador" Item = {CadastroEvento} />}  path="/CadastroEvento" />
         <Route
-          path="/tipousuario"
+          path="/usuarios"
           element={<Privado tipoPermitido = "Administrador" Item = {TipoUsuario} />}
         />
         <Route

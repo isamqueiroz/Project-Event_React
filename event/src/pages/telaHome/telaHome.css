@@ -148,3 +148,22 @@ secao-contato {
     margin-top: -24px;
  
 }
+
+.cabecalho button {
+    height: 35px;
+    width: 80px;
+    background-color: #B51D44;
+    color: aliceblue;
+    border-radius: 8px;
+    border: 0px;
+}
+
+.cabecalho img {
+    height: 25px;
+}
+
+.cabecalho{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

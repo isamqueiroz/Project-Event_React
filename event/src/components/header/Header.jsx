@@ -15,11 +15,10 @@ const Header = (props) => {
               <Link to="/Home" className="link_header" href="">Home</Link>
               <Link to="/Eventos" className="link_header" href="">Eventos</Link>
               <Link to="/Usuarios" className="link_header" href="">Usuários</Link>
-             <button className="botao" type="submit">{props.nomeDoBotao}</button>
 
             </nav>
             
-            <nav className="nav_header admin">
+            <nav className="adm admin">
               <Link to="/Administrador" className="link_header" href="">{props.headerzinho}<img src={portinha} alt="" /></Link>
                 
             </nav>
