@@ -248,6 +248,7 @@ const Evento = () => {
           valorSelectInstituicao={instituicao}
           setValorSelectInstituicao={setInstituicao}
           campoDescricao="Descrição"
+          headerzinho = "none"
         />
 
         <Lista
@@ -267,3 +268,18 @@ const Evento = () => {
 };
 
 export default Evento;
+
+
+
+
+
+
+// o Event+, uma plataforma que criamos para resolver problemas na organização e divulgação de eventos internos da nossa instituição.
+
+//A ideia surgiu porque as informações estavam muito espalhadas, e não havia controle real de participação.
+
+//Com o Event+, tudo ficou centralizado em um só lugar. A interface é intuitiva, dá pra filtrar, editar eventos e confirmar presença com facilidade.
+
+//No desenvolvimento, usamos tecnologias modernas como JavaScript, React, JSX e CSS. O React, por exemplo, foi essencial para criar uma experiência dinâmica e responsiva, já que ele permite atualizar a interface sem recarregar a página.
+
+//Com isso, conseguimos tornar a gestão de eventos mais eficiente, organizada e profissional."

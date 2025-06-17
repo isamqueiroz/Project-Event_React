@@ -46,7 +46,7 @@
 }
 
 .banner-secundario {
-    background-image: url("../../assets/img/Img2Home.png");
+    background-image: url("../../assets/img/marsalinha.png");
     width: 100%;
     height: 300px;
     color: white;
@@ -150,9 +150,9 @@ secao-contato {
 }
 
 .cabecalho button {
-    height: 35px;
-    width: 80px;
-    background-color: #B51D44;
+    height: 40px;
+    width: 110px;
+    background-color: #610315;
     color: aliceblue;
     border-radius: 8px;
     border: 0px;

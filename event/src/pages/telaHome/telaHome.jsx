@@ -1,8 +1,7 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import BannerPrincipal from "../../assets/img/BannerPrincipal.png";
+import BannerPrincipal from "../../assets/img/marsala.png";
 import { Link } from "react-router-dom";
-import ImagemMapa from "../../assets/img/mapinha.png";
 import Logo1 from "../../assets/img/logo1.svg"
 
 import "./telaHome.css";
@@ -68,7 +67,7 @@ const Home = () => {
               <div className="cartao-evento" key={index}>
                 <h2>{evento.titulo}</h2>
                 <p>{evento.descricao}</p>
-                <Link className="link-evento" to="/Login">
+                <Link className="link-evento" to="/">
                   Conectar
                 </Link>
               </div>
